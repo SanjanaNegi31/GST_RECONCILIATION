@@ -1,0 +1,25 @@
+import { cva } from "class-variance-authority";
+
+/**
+ * Kept out of button.tsx so that file only exports components - otherwise the
+ * react-refresh lint rule (rightly) complains about mixed exports.
+ */
+export const buttonVariants = cva(
+  "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-md text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-1 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-blue-600 text-white hover:bg-blue-700",
+        outline:
+          "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50",
+        ghost: "text-slate-700 hover:bg-slate-100",
+      },
+      size: {
+        default: "h-8 px-3",
+        sm: "h-7 px-2",
+        icon: "h-7 w-7",
+      },
+    },
+    defaultVariants: { variant: "default", size: "default" },
+  }
+);
