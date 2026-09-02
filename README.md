@@ -64,19 +64,3 @@ up the filter bar. I reviewed its output, which caught real bugs — a `??` that
 never fell back on an empty string, and cells overflowing into their neighbours.
 The product calls were mine.
 
-## Scaling to 50,000 rows
-
-Rendering isn't the bottleneck; virtualization already handles that. State is a
-flat array walked on every change — `visibleInvoices` filters all 50,000 whenever
-a filter moves, and `updateCell` maps the whole array per edit. Fine at 1,000,
-a visible stall at 50,000.
-
-1. **Normalize to `Map<string, Invoice>`** so an edit touches one key, with a
-   separate id array holding the order.
-2. **Index by status** so filtering is a lookup, not a full scan — and
-   **debounce the search**, which currently re-scans on every keystroke.
-3. **`React.memo` the row**, so an edit re-renders one row, not all of them.
-4. **Move filtering and paging to the server** beyond a few hundred thousand
-   rows, where transfer size and memory are the real limits.
-
-Selection is already a `Set`, so it's O(1) and needs no change.
