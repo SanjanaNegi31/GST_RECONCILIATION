@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 // Sticky has to live on the cells rather than <thead>, which browsers won't
 // stick reliably. The border goes here too, for the same reason.
 const HEAD =
-  "sticky top-0 z-10 h-10 border-b border-slate-200 bg-slate-50 text-[11px] font-semibold uppercase tracking-wider text-slate-500";
+  "sticky top-0 z-10 h-11 border-b border-slate-200 bg-slate-50 text-xs font-bold uppercase tracking-wider text-slate-800";
 
 interface GridHeaderProps {
   allSelected: boolean;
@@ -21,7 +21,7 @@ export const GridHeader: React.FC<GridHeaderProps> = ({
 }) => (
   <TableHeader>
     <TableRow className="border-0 hover:bg-transparent">
-      <TableHead className={HEAD}>
+      <TableHead className={cn(HEAD, "overflow-visible px-2")}>
         <Checkbox
           checked={allSelected}
           indeterminate={someSelected && !allSelected}
@@ -37,7 +37,7 @@ export const GridHeader: React.FC<GridHeaderProps> = ({
       <TableHead className={cn(HEAD, "text-right")}>Total</TableHead>
       <TableHead className={cn(HEAD, "text-right")}>GSTR-2B</TableHead>
       <TableHead className={cn(HEAD, "text-right")}>Diff</TableHead>
-      <TableHead className={HEAD}>Status</TableHead>
+      <TableHead className={cn(HEAD, "text-right")}>Status</TableHead>
     </TableRow>
   </TableHeader>
 );

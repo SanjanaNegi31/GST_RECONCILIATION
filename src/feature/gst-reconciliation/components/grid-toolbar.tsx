@@ -32,7 +32,7 @@ interface GridToolbarProps {
 // Each control in the grouped bar, matching the reference layout. Height is
 // kept in step with the search Input next to it.
 const SEGMENT =
-  "flex h-12 items-center gap-2 px-4 text-[13px] text-slate-700 transition-colors hover:bg-slate-50";
+  "flex h-12 items-center gap-2 px-4 text-sm text-slate-700 transition-colors hover:bg-slate-50";
 
 export const GridToolbar: React.FC<GridToolbarProps> = ({
   filters,
@@ -44,7 +44,6 @@ export const GridToolbar: React.FC<GridToolbarProps> = ({
   totalCount,
   selectedCount,
   onMarkReconciled,
-  onClearSelection,
 }) => {
   const range: DateRange | undefined =
     filters.dateFrom || filters.dateTo
@@ -81,7 +80,7 @@ export const GridToolbar: React.FC<GridToolbarProps> = ({
           }
           placeholder="Search invoices"
           aria-label="Search by vendor, invoice number or GSTIN"
-          className="w-72 pl-9 text-[13px]"
+          className="w-72 pl-9 text-sm"
         />
       </div>
 
@@ -138,7 +137,7 @@ export const GridToolbar: React.FC<GridToolbarProps> = ({
         <button
           onClick={onResetFilters}
           disabled={!isFiltered}
-          className="flex h-12 items-center gap-2 px-4 text-[13px] font-medium text-red-600 transition-colors hover:bg-red-50 disabled:text-slate-400 disabled:hover:bg-transparent"
+          className="flex h-12 items-center gap-2 px-4 text-sm font-medium text-rose-600 transition-colors hover:bg-rose-50 disabled:text-slate-400 disabled:hover:bg-transparent"
         >
           <RotateCcw className="h-3.5 w-3.5" />
           Reset Filters
@@ -148,22 +147,17 @@ export const GridToolbar: React.FC<GridToolbarProps> = ({
       <div className="ml-auto flex items-center gap-3">
         {selectedCount > 0 ? (
           <>
-            <span className="text-[13px] text-slate-600">
+            <span className="text-sm text-slate-600">
               <strong className="font-semibold text-slate-900">
                 {selectedCount}
               </strong>{" "}
               selected
             </span>
             <Button onClick={onMarkReconciled}>Mark as reconciled</Button>
-            <button
-              onClick={onClearSelection}
-              className="text-[13px] text-slate-500 underline underline-offset-2 hover:text-slate-700"
-            >
-              Clear
-            </button>
+
           </>
         ) : (
-          <span className="text-[13px] text-slate-500">
+          <span className="text-sm text-slate-500">
             Showing{" "}
             <strong className="font-medium text-slate-900">
               {visibleCount.toLocaleString("en-IN")}

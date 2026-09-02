@@ -35,7 +35,7 @@ function Calendar({
           "flex items-center gap-1 text-sm font-medium text-slate-900",
         dropdowns: "flex items-center gap-1.5",
         dropdown_root:
-          "relative inline-flex items-center rounded-md border border-slate-300 bg-white px-2 py-1 hover:bg-slate-50 focus-within:ring-2 focus-within:ring-blue-500",
+          "relative inline-flex items-center rounded-md border border-slate-300 bg-white px-2 py-1 hover:bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-500",
         dropdown: "absolute inset-0 cursor-pointer opacity-0",
         nav: "absolute inset-x-0 top-0 flex items-center justify-between",
         button_previous: cn(buttonVariants({ variant: "outline", size: "icon" })),
@@ -49,15 +49,15 @@ function Calendar({
           buttonVariants({ variant: "ghost" }),
           "h-8 w-8 rounded-md p-0 font-normal"
         ),
-        today: "[&>button]:font-semibold [&>button]:text-blue-600",
+        today: "[&>button]:font-semibold [&>button]:text-indigo-600",
         outside: "text-slate-300 [&>button]:text-slate-300",
         disabled: "opacity-40",
         hidden: "invisible",
         range_start:
-          "rounded-l-md bg-blue-100 [&>button]:bg-blue-600 [&>button]:text-white [&>button]:hover:bg-blue-600",
+          "rounded-l-md bg-indigo-100 [&>button]:bg-indigo-600 [&>button]:text-white [&>button]:hover:bg-indigo-600",
         range_end:
-          "rounded-r-md bg-blue-100 [&>button]:bg-blue-600 [&>button]:text-white [&>button]:hover:bg-blue-600",
-        range_middle: "bg-blue-100 [&>button]:text-slate-900",
+          "rounded-r-md bg-indigo-100 [&>button]:bg-indigo-600 [&>button]:text-white [&>button]:hover:bg-indigo-600",
+        range_middle: "bg-indigo-100 [&>button]:text-slate-900",
         selected: "",
         ...classNames,
       }}

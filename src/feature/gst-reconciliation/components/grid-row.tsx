@@ -32,11 +32,11 @@ export const GridRow: React.FC<GridRowProps> = ({
   return (
     <TableRow
       className={cn(
-        "h-10 text-[13px] text-slate-700",
-        isSelected ? "bg-blue-50 hover:bg-blue-100" : status.row
+        "h-11 text-sm text-slate-700",
+        isSelected ? "bg-indigo-50 hover:bg-indigo-100" : status.row
       )}
     >
-      <TableCell>
+      <TableCell className="overflow-visible px-2">
         <Checkbox
           checked={isSelected}
           onChange={(e) =>
@@ -50,11 +50,11 @@ export const GridRow: React.FC<GridRowProps> = ({
         {invoice.vendor_name}
       </TableCell>
 
-      <TableCell className="truncate font-mono text-[11px] text-slate-500">
+      <TableCell className="truncate font-mono text-xs text-slate-500">
         {invoice.vendor_gstin}
       </TableCell>
 
-      <TableCell className="truncate font-mono text-[11px] text-slate-500">
+      <TableCell className="truncate font-mono text-xs text-slate-500">
         {invoice.invoice_number}
       </TableCell>
 
@@ -71,7 +71,10 @@ export const GridRow: React.FC<GridRowProps> = ({
         />
       </TableCell>
 
-      <TableCell className="text-right font-medium tabular-nums text-slate-900">
+      <TableCell
+        className="text-right font-medium tabular-nums text-slate-900"
+        title={formatINR(invoice.total_amount)}
+      >
         {formatINR(invoice.total_amount)}
       </TableCell>
 
@@ -87,16 +90,17 @@ export const GridRow: React.FC<GridRowProps> = ({
       <TableCell
         className={cn(
           "text-right tabular-nums",
-          difference ? "font-medium text-red-600" : "text-slate-400"
+          difference ? "font-medium text-rose-600" : "text-slate-400"
         )}
+        title={difference ? formatINR(difference) : undefined}
       >
         {difference === null ? "—" : difference === 0 ? "0" : formatINR(difference)}
       </TableCell>
 
-      <TableCell>
+      <TableCell className="flex h-11 items-center justify-end gap-1">
         <span
           className={cn(
-            "inline-flex items-center rounded-md px-2 py-0.5 text-[11px] font-medium",
+            "inline-flex shrink-0 items-center rounded-md px-2 py-0.5 text-xs font-medium",
             status.badge
           )}
           title={status.label}

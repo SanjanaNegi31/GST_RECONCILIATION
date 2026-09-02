@@ -7,7 +7,7 @@ import { GridRow } from "./grid-row";
 
 // Must match the row height set in grid-row.tsx (h-10), or the virtualizer's
 // spacer maths drifts away from what's actually rendered.
-const ROW_HEIGHT = 40;
+const ROW_HEIGHT = 44;
 
 interface ReconciliationGridProps {
   invoices: Invoice[];
@@ -55,7 +55,7 @@ export const ReconciliationGrid: React.FC<ReconciliationGridProps> = ({
     return (
       <div className="rounded-lg border border-slate-200 bg-white p-12 text-center shadow-sm">
         <p className="text-sm font-medium text-slate-900">No matching invoices</p>
-        <p className="mt-1 text-[13px] text-slate-500">
+        <p className="mt-1 text-sm text-slate-500">
           Try widening the date range or clearing the filters.
         </p>
       </div>
@@ -67,15 +67,10 @@ export const ReconciliationGrid: React.FC<ReconciliationGridProps> = ({
       <Table
         containerRef={scrollRef}
         containerClassName="min-h-0 flex-1 scrollbar-none"
-        className="min-w-[900px] table-fixed"
+        className="min-w-[1150px] table-fixed"
       >
-        {/* Percentages, not pixels - the columns share whatever width is
-            available, and min-w above is the floor before sideways scroll.
-            These have to be declared rather than left to `table-auto`: only the
-            ~17 virtualized rows are in the DOM, so auto sizing would remeasure
-            against each batch and make the columns jump while scrolling. */}
         <colgroup>
-          <col className="w-[3%]" />
+          <col className="w-[44px]" />
           <col className="w-[18%]" />
           <col className="w-[12%]" />
           <col className="w-[10%]" />

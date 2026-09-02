@@ -82,7 +82,13 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   return (
     <td
       data-slot="table-cell"
-      className={cn("px-3 align-middle whitespace-nowrap", className)}
+      // overflow-hidden matters under `table-fixed`: without it, content wider
+      // than its column paints straight over the neighbouring cells
+      // instead of being clipped.
+      className={cn(
+        "overflow-hidden text-ellipsis px-3 align-middle whitespace-nowrap",
+        className
+      )}
       {...props}
     />
   );

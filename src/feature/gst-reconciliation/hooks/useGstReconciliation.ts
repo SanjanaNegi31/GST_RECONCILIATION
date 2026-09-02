@@ -31,12 +31,7 @@ export function useGstReconciliation() {
     });
   }, [invoices, filters]);
 
-  const isFiltered =
-    filters.search !== "" ||
-    filters.status !== "all" ||
-    filters.dateFrom !== "" ||
-    filters.dateTo !== "";
-
+  const isFiltered = filters.search !== "" || filters.status !== "all" || filters.dateFrom !== "" || filters.dateTo !== "";
   const resetFilters = useCallback(() => setFilters(EMPTY_FILTERS), []);
 
   /** Earliest and latest invoice dates, so the calendar can open on the data

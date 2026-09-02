@@ -58,7 +58,7 @@ export const InlineCellEditor: React.FC<InlineCellEditorProps> = ({
           if (e.key === "Enter") save();
           if (e.key === "Escape") cancel();
         }}
-        className="w-full rounded-md border border-blue-500 bg-white px-2 py-1 text-right text-[13px] tabular-nums ring-2 ring-blue-100 focus:outline-none"
+        className="w-full rounded-md border border-indigo-500 bg-white px-2 py-1 text-right text-sm tabular-nums ring-2 ring-indigo-100 focus:outline-none"
       />
     );
   }
@@ -67,8 +67,8 @@ export const InlineCellEditor: React.FC<InlineCellEditorProps> = ({
     <button
       type="button"
       onClick={() => setIsEditing(true)}
-      title="Click to edit"
-      className="w-full rounded-md px-2 py-1 text-right text-[13px] tabular-nums decoration-slate-300 decoration-dotted underline-offset-4 hover:bg-blue-50 hover:underline focus-visible:bg-blue-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400"
+      title={value === null ? "Click to edit" : `${formatINR(value)} — click to edit`}
+      className="block w-full truncate rounded-md px-2 py-1 text-right text-sm tabular-nums decoration-slate-300 decoration-dotted underline-offset-4 hover:bg-indigo-50 hover:underline focus-visible:bg-indigo-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
     >
       {value === null ? "—" : formatINR(value)}
     </button>
